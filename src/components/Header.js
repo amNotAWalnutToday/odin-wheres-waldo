@@ -1,7 +1,5 @@
 import styled from "styled-components";
-import heatranImage from '../imgs/heatran.png';
-import rayquazaImage from '../imgs/rayquaza.png';
-import wailordImage from '../imgs/wailord.png';
+import ThingsToFind from "./ThingsToFind";
 
 const Heading = styled.header`
     display: flex;
@@ -20,12 +18,6 @@ const Title = styled.h1`
 const Ul = styled.ul`
     display: flex;
     gap: 2rem;
-    transform: translateY(-25%);
-`
-
-const Li = styled.li`
-    font-size: 20px;
-    list-style: none;
 `
 
 const Button = styled.button`
@@ -41,9 +33,7 @@ const Header = () => {
         <Heading>
             <Title>Find That Pokemon</Title>
             <Ul>
-                <Li className="heatran">Heatran</Li>
-                <Li className="rayquaza" >Rayquaza</Li>
-                <Li className="wailord" >Wailord</Li>
+                <ThingsToFind />
             </Ul>
             <Button>HighScores</Button>
         </Heading>
