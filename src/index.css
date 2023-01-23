@@ -1,0 +1,47 @@
+:root {
+  --white: #f9fafb;
+  --black: #111827;
+  --darkgrey: #1f2937;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: var(--white);
+}
+
+body {
+  background-color: var(--darkgrey);
+}
+
+.wailord::before,
+.heatran::before {
+  display: inline-block;
+  content: ' ';
+  width: 75px;
+  height: 75px;
+  transform: translate(-15%, 30%);
+}
+
+.heatran::before {
+  background: url('./imgs/heatran.png');
+  background-size: contain;
+}
+
+.rayquaza::before {
+  display: inline-block;
+  content: ' ';
+  width: 75px;
+  height: 75px;
+  background: url('./imgs/rayquaza.png');
+  background-size: contain;
+  transform: translateY(30%);
+}
+
+.wailord::before {
+  background: url('./imgs/wailord.png');
+  background-size: contain;
+}
