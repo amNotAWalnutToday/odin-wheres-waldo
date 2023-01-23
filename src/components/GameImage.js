@@ -1,4 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
+import { collection, query, where, getDocs } from 'firebase/firestore';
+import { db } from '../App';
 import styled from 'styled-components';
 import Dropdown from './Dropdown';
 import TargetBox from './TargetBox';
@@ -22,7 +24,7 @@ const Box = styled.div`
     outline: 2px solid pink;
 `
 
-const GameImage = () => {
+const GameImage = ( {objectives} ) => {
     const [showMenu, setShowMenu] = useState(false);
     const [clickPosition, setClickPosition] = useState({x: 0, y: 0});
     const [imagePosition, setImagePosition] = useState({x: 0, y: 0});
@@ -48,6 +50,27 @@ const GameImage = () => {
             y: imageRef.current.offsetTop,
         })
     }
+
+    const validateImage = async (pokemon) => {
+        const mouseX = clickPosition.x - imagePosition.x;
+        const mouseY = clickPosition.y - imagePosition.y;
+        const validateLocationQuery = query(
+            collection(db, pokemon),
+            where("posX", "<=", mouseX),
+        );
+        let validatedPokemon;
+        const querySnapshot = await getDocs(validateLocationQuery);
+        querySnapshot.forEach(query => {
+            if(mouseY <= (query.data().posY)
+            || mouseX >= (query.data().width + query.data().posX) 
+            || mouseY >= (query.data().height + query.data().posY)
+            ) return;
+            validatedPokemon = query.data();
+        });
+        return validatedPokemon;
+    }
+
+    (async () => console.log(await validateImage('Rayquaza')))();
 
     return (
         <div onClick={toggleMenu}>
