@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import Dropdown from './Dropdown';
+import TargetBox from './TargetBox';
 import theImage from '../imgs/pokemon-image.jpg';
 
 const Image = styled.img`
@@ -16,7 +17,6 @@ const GameImage = () => {
     const [clickPosition, setClickPosition] = useState({x: 0, y:0});
 
     const toggleMenu = (e) => {
-        console.log('x', e.nativeEvent.pageX, 'y',  e.nativeEvent.pageY);
         setClickPosition({
             x: e.nativeEvent.pageX,
             y: e.nativeEvent.pageY,
@@ -29,6 +29,7 @@ const GameImage = () => {
         <div onClick={toggleMenu}>
             <Image src={theImage} alt="game image" />
             {showMenu && <Dropdown clickPosition={clickPosition} />}
+            {showMenu && <TargetBox clickPosition={clickPosition}/>}
         </div>
     );
 }
