@@ -11,10 +11,13 @@ const Menu = styled.div`
     border-radius: 5px;
 `
 
-const Dropdown = ( {clickPosition} ) => {
+const Dropdown = ( {objectives, clickPosition, validateImage} ) => {
     return(
         <Menu clickPosition={clickPosition} >
-            <ThingsToFind />
+            <ThingsToFind 
+                validateImage={validateImage} 
+                fromDropdown="true" objectives={objectives}
+            />
         </Menu>
     );
 }

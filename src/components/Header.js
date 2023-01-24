@@ -28,12 +28,12 @@ const Button = styled.button`
     border: none;
 `
 
-const Header = () => {
+const Header = ( {objectives} ) => {
     return (
         <Heading>
             <Title>Find That Pokemon</Title>
             <Ul>
-                <ThingsToFind />
+                <ThingsToFind objectives={objectives} />
             </Ul>
             <Button>HighScores</Button>
         </Heading>

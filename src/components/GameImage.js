@@ -24,7 +24,7 @@ const Box = styled.div`
     outline: 2px solid pink;
 `
 
-const GameImage = ( {objectives} ) => {
+const GameImage = ( {objectives, findCharacter} ) => {
     const [showMenu, setShowMenu] = useState(false);
     const [clickPosition, setClickPosition] = useState({x: 0, y: 0});
     const [imagePosition, setImagePosition] = useState({x: 0, y: 0});
@@ -65,18 +65,26 @@ const GameImage = ( {objectives} ) => {
             || mouseX >= (query.data().width + query.data().posX) 
             || mouseY >= (query.data().height + query.data().posY)
             ) return;
-            validatedPokemon = query.data();
+            else {
+                validatedPokemon = query.data();
+                findCharacter(pokemon);
+            }
         });
+        console.log(objectives)
         return validatedPokemon;
     }
-
-    (async () => console.log(await validateImage('Rayquaza')))();
 
     return (
         <div onClick={toggleMenu}>
             <Image src={theImage} alt="game image" ref={imageRef} />
             <Box pos={imagePosition} />
-            {showMenu && <Dropdown clickPosition={clickPosition}/>}
+            {showMenu 
+                && <Dropdown 
+                    clickPosition={clickPosition} 
+                    validateImage={validateImage} 
+                    objectives={objectives}
+                />
+            }
             {showMenu && <TargetBox clickPosition={clickPosition}/>}
         </div>
     );
