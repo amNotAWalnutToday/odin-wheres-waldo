@@ -72,11 +72,15 @@ const App = () => {
   }
 
   const parseTime = (timeInSeconds) => {
+    let secondPrefix = '';
+    let minutePrefix = '';
     let seconds;
     const minutes = Math.floor(timeInSeconds / 60);
     if(minutes > 0) seconds = timeInSeconds - (minutes * 60); 
     else seconds = timeInSeconds;
-    return `${minutes}m ${seconds}s`
+    if(minutes < 10) minutePrefix = '0';
+    if(seconds < 10) secondPrefix = '0';
+    return `${minutePrefix}${minutes}m ${secondPrefix}${seconds}s`
   }
 
   const findCharacter = (pokemon) => {
