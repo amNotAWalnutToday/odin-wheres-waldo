@@ -60,3 +60,4 @@ const ThingsToFind = ( {objectives, validateImage, fromDropdown} ) => {
 }
 
 export default ThingsToFind;
+export { Li };

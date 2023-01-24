@@ -11,11 +11,14 @@ const Image = styled.img`
     width: 1024px;
     height: 576px;
     margin: 1rem 0;
+    user-select: none;
     border-radius: 5px;
     box-shadow: 0px 0px 5px 1px #111827;
 `;
 
+/* this is for testing */
 const Box = styled.div`
+    display: none;
     position: absolute;
     top: calc(${props => props.pos.y}px + 0px);
     left: calc(${props => props.pos.x}px + 200px);
@@ -76,7 +79,12 @@ const GameImage = ( {objectives, findCharacter} ) => {
 
     return (
         <div onClick={toggleMenu}>
-            <Image src={theImage} alt="game image" ref={imageRef} />
+            <Image 
+                src={theImage} 
+                alt="game image" 
+                draggable={false} 
+                ref={imageRef} 
+            />
             <Box pos={imagePosition} />
             {showMenu 
                 && <Dropdown 

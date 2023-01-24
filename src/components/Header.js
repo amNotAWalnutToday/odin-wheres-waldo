@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import ThingsToFind from "./ThingsToFind";
+import Timer from './Timer';
 
 const Heading = styled.header`
     display: flex;
@@ -29,14 +30,22 @@ const Button = styled.button`
     transition: background-color 0.2s ease-out;
 `
 
-const Header = ( {objectives} ) => {
+const Header = ( {objectives, 
+        toggleHighscores, 
+        timeTaken, 
+        incrementTimer,
+    } ) => {
     return (
         <Heading>
             <Title>Find That Pokemon</Title>
             <Ul>
                 <ThingsToFind objectives={objectives} />
+                <Timer 
+                    timeTaken={timeTaken}
+                    incrementTimer={incrementTimer}
+                />
             </Ul>
-            <Button>HighScores</Button>
+            <Button onClick={toggleHighscores}>HighScores</Button>
         </Heading>
     );
 }

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+/* obsolete will be removed */
 const Target = styled.div`
     position: absolute;
     top: calc(${props => props.clickPosition.y}px - 25px);
