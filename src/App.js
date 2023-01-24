@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { initializeApp } from 'firebase/app';
 import getFirebaseConfig from './firebase.config';
-import { getFirestore } from 'firebase/firestore';
+import { getFirestore, query, getDocs, collection, orderBy, limit } from 'firebase/firestore';
 import styled from 'styled-components';
 import Header from './components/Header';
 import GameImage from './components/GameImage';
@@ -21,6 +21,7 @@ const Container = styled.div`
 const App = () => {
   const [showHighscores, setShowHighscores] = useState(false);
   const [timeTaken, setTimeTaken] = useState(0);
+  const [allHighscores, setAllHighscores] = useState();
   const [objectives, setObjectives] = useState([
     {
       pokemon: 'heatran',
@@ -36,6 +37,31 @@ const App = () => {
     },
   ]);
 
+  const receiveScore = () => {
+    async function result() {
+      const topTen = [];
+      const scoreQuery = query(
+        collection(db, "scores"), 
+        orderBy("timeTaken"), 
+        limit(10)
+      );
+      const querySnapshot = await getDocs(scoreQuery);
+      querySnapshot.forEach(score => {
+          topTen.push(score.data());
+          setAllHighscores(topTen)
+      });
+      return topTen;
+    }
+    console.log(allHighscores);
+    return result();
+    
+  }
+
+  useEffect(() => {
+    receiveScore()
+    /* eslint-disable-next-line */
+  }, []);
+
   const toggleHighscores = () => {
     setShowHighscores(!showHighscores);
   }
@@ -43,6 +69,14 @@ const App = () => {
   const incrementTimer = () => {
     if(completeGame()) return;
     setTimeTaken(timeTaken => timeTaken + 1);
+  }
+
+  const parseTime = (timeInSeconds) => {
+    let seconds;
+    const minutes = Math.floor(timeInSeconds / 60);
+    if(minutes > 0) seconds = timeInSeconds - (minutes * 60); 
+    else seconds = timeInSeconds;
+    return `${minutes}m ${seconds}s`
   }
 
   const findCharacter = (pokemon) => {
@@ -69,13 +103,20 @@ const App = () => {
         objectives={objectives} 
         toggleHighscores={toggleHighscores}
         timeTaken={timeTaken}
-        incrementTimer={incrementTimer} 
+        incrementTimer={incrementTimer}
+        parseTime={parseTime}
       />
       <GameImage 
         objectives={objectives} 
         findCharacter={findCharacter} 
       />
-      {showHighscores && <Highscores timeTaken={timeTaken} />}
+      {showHighscores 
+      && <Highscores 
+          allHighscores={allHighscores} 
+          timeTaken={timeTaken} 
+          parseTime={parseTime} 
+        />
+      }
     </Container>
   );
 }

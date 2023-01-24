@@ -1,7 +1,8 @@
-import { useRef } from 'react';
-import { collection, query, where, getDocs, addDoc } from 'firebase/firestore';
+import { useEffect, useRef, useState } from 'react';
+import { collection, query, where, getDocs, addDoc, orderBy, limit } from 'firebase/firestore';
 import { db } from '../App';
 import styled from "styled-components";
+import TopScores from './TopScores';
 
 
 const Popup = styled.div`
@@ -13,7 +14,7 @@ const Popup = styled.div`
     border-radius: 5px;
 `
 
-const Highscores = ( {timeTaken} ) => {
+const Highscores = ( {timeTaken, parseTime, allHighscores} ) => {
     const nameInput = useRef();
 
     const submitScore = async () => {
@@ -32,6 +33,7 @@ const Highscores = ( {timeTaken} ) => {
         <Popup>
             <h2>Highscores</h2>
             <hr />
+            {<TopScores allHighscores={allHighscores} parseTime={parseTime}/>}
             <label htmlFor="name"></label>
             <input id="name" type="text" ref={nameInput} />
             <button onClick={submitScore} >Submit</button>

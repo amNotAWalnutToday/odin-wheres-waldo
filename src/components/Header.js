@@ -34,6 +34,7 @@ const Header = ( {objectives,
         toggleHighscores, 
         timeTaken, 
         incrementTimer,
+        parseTime,
     } ) => {
     return (
         <Heading>
@@ -43,6 +44,7 @@ const Header = ( {objectives,
                 <Timer 
                     timeTaken={timeTaken}
                     incrementTimer={incrementTimer}
+                    parseTime={parseTime}
                 />
             </Ul>
             <Button onClick={toggleHighscores}>HighScores</Button>
