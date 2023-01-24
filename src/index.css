@@ -17,6 +17,7 @@ body {
   background-color: var(--darkgrey);
 }
 
+.timer::before,
 .wailord::before,
 .heatran::before {
   display: inline-block;
