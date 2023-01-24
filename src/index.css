@@ -45,3 +45,9 @@ body {
   background: url('./imgs/wailord.png');
   background-size: contain;
 }
+
+.menu-item:hover,
+button:hover {
+  background-color: #f9fafb9b;
+  cursor: pointer;
+}

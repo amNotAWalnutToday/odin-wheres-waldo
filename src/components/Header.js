@@ -26,6 +26,7 @@ const Button = styled.button`
     background-color: #1f2937;
     border-radius: 5px;
     border: none;
+    transition: background-color 0.2s ease-out;
 `
 
 const Header = ( {objectives} ) => {

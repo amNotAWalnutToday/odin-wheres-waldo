@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { initializeApp } from 'firebase/app';
 import getFirebaseConfig from './firebase.config';
 import { getFirestore } from 'firebase/firestore';
-import { collection, getDocs, query, where } from 'firebase/firestore';
 import styled from 'styled-components';
 import Header from './components/Header';
 import GameImage from './components/GameImage';
