@@ -52,4 +52,5 @@ const Header = ( {objectives,
     );
 }
 
+export { Button };
 export default Header 

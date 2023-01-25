@@ -1,4 +1,18 @@
-import { useEffect, useState } from "react";
+import styled from "styled-components";
+import React, { useEffect, useState } from "react";
+
+const Ol = styled.ol`
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 2rem;
+`
+
+const Li = styled.li`
+    display: flex;
+    justify-content: space-between;
+    padding: 0rem 1rem;
+`
 
 const TopScores = ( {allHighscores, parseTime} ) => {
     const [loading, setLoading] = useState(true);
@@ -10,16 +24,23 @@ const TopScores = ( {allHighscores, parseTime} ) => {
     const scoreMap = () => {
         return allHighscores.map((item, i) => {
             return (
-                <li key={i}>{item.name}{parseTime(item.timeTaken)}</li>
+                <React.Fragment key={i} >
+                    <Li>
+                        {i+1}. {item.name}
+                        <span>
+                            {parseTime(item.timeTaken)}
+                        </span>
+                    </Li>
+                    <hr/>
+                </React.Fragment>
             )
         });
     }
 
     return (
-        <ul>
-            <li>hi</li>
-            {loading ? undefined : scoreMap() }
-        </ul>
+        <Ol>
+            {loading ? undefined : scoreMap()}
+        </Ol>
     )
 }
 

@@ -119,6 +119,7 @@ const App = () => {
           allHighscores={allHighscores} 
           timeTaken={timeTaken} 
           parseTime={parseTime} 
+          toggleHighscores={toggleHighscores}
         />
       }
     </Container>
@@ -127,3 +128,6 @@ const App = () => {
 
 export { db };
 export default App;
+
+// next step => limit when you can send high scores
+// => style highscore menu + adjust layout

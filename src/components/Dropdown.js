@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import ThingsToFind from './ThingsToFind';
 
-const Menu = styled.div`
+const Menu = styled.ul`
     z-index: 5;
     position: absolute;
     top: calc(${props => props.clickPosition.y}px - 50px);
