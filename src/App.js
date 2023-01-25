@@ -54,7 +54,6 @@ const App = () => {
     }
     console.log(allHighscores);
     return result();
-    
   }
 
   useEffect(() => {
@@ -89,6 +88,7 @@ const App = () => {
       if(character.pokemon === pokemon) character.found = true;
     });
     setObjectives(characters);
+    if(completeGame()) toggleHighscores();
   }
 
   const completeGame = () => {
@@ -99,6 +99,18 @@ const App = () => {
     });
     if(winConditions.length === 3) return true;
     else return false;
+  }
+
+  const resetGame = () => {
+    if(!completeGame()) return;
+    const characters = [...objectives];
+    characters.forEach(character => {
+      character.found = false;
+    });
+    setObjectives(characters);
+    setTimeTaken(0);
+    receiveScore();
+    toggleHighscores();
   }
 
   return (
@@ -121,6 +133,7 @@ const App = () => {
           parseTime={parseTime} 
           toggleHighscores={toggleHighscores}
           completeGame={completeGame}
+          resetGame={resetGame}
         />
       }
     </Container>

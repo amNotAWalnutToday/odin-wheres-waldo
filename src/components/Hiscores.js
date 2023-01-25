@@ -20,7 +20,7 @@ const Popup = styled.div`
 `
 
 const Underlay = styled.div`
-position: absolute;
+    position: absolute;
     top: 0;
     left: 0;
     background-color: #11182793;
@@ -56,6 +56,7 @@ const Highscores = ( {timeTaken,
     allHighscores, 
     toggleHighscores, 
     completeGame,
+    resetGame,
     } ) => {
     const nameInput = useRef();
 
@@ -93,6 +94,9 @@ const Highscores = ( {timeTaken,
                 <ButtonGroup>
                     <Button onClick={submitScore}>
                         Submit
+                    </Button>
+                    <Button onClick={resetGame}>
+                        Reset
                     </Button>
                     <Button onClick={toggleHighscores}>
                         Close
