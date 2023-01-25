@@ -22,7 +22,7 @@ const App = () => {
   const [showHighscores, setShowHighscores] = useState(false);
   const [timeTaken, setTimeTaken] = useState(0);
   const [allHighscores, setAllHighscores] = useState();
-  const [objectives, setObjectives] = useState([
+  const [allObjectives, setAllObjectives] = useState([
     {
       pokemon: 'heatran',
       found: false,
@@ -35,7 +35,56 @@ const App = () => {
       pokemon: 'wailord',
       found: false,
     },
+    {
+      pokemon: 'samurott',
+      found: false,
+    },
+    {
+      pokemon: 'drifblim',
+      found: false,
+    },
+    {
+      pokemon: 'ferrothorn',
+      found: false,
+    },
+    {
+      pokemon: 'audino',
+      found: false,
+    },
+    {
+      pokemon: 'gigalith',
+      found: false,
+    },
+    {
+      pokemon: 'vulpix',
+      found: false,
+    },
+    {
+      pokemon: 'machop',
+      found: false,
+    },
+    {
+      pokemon: 'emboar',
+      found: false,
+    },
+    {
+      pokemon: 'flygon',
+      found: false,
+    },
+    {
+      pokemon: 'lopunny',
+      found: false,
+    },
+    {
+      pokemon: 'zoroark',
+      found: false,
+    },
+    {
+      pokemon: 'lucario',
+      found: false,
+    },
   ]);
+  const [objectives, setObjectives] = useState();
 
   const receiveScore = () => {
     async function result() {
@@ -56,8 +105,23 @@ const App = () => {
     return result();
   }
 
+  const randomizeObjectives = () => {
+    const all = [...allObjectives];
+    const current = [];
+    for(let i = 0; i < allObjectives.length - 3; i++){
+      const ran = Math.floor(Math.random() * (allObjectives.length - i));
+      current.push(all[ran]);
+      all.splice(ran, 1);
+    }
+    console.log(current);
+    setObjectives(current);
+    console.log(objectives)
+  }
+
   useEffect(() => {
-    receiveScore()
+    randomizeObjectives();
+    receiveScore();
+    console.log(objectives);
     /* eslint-disable-next-line */
   }, []);
 
@@ -109,6 +173,7 @@ const App = () => {
     });
     setObjectives(characters);
     setTimeTaken(0);
+    randomizeObjectives();
     receiveScore();
     toggleHighscores();
   }

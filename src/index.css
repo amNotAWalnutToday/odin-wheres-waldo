@@ -19,7 +19,19 @@ body {
 
 .timer::before,
 .wailord::before,
-.heatran::before {
+.heatran::before,
+.samurott::before,
+.drifblim::before,
+.zoroark::before,
+.lopunny::before,
+.lucario::before,
+.flygon::before,
+.machop::before,
+.emboar::before,
+.vulpix::before,
+.gigalith::before,
+.audino::before,
+.ferrothorn::before {
   display: inline-block;
   content: ' ';
   width: 75px;
@@ -42,8 +54,68 @@ body {
   transform: translateY(30%);
 }
 
+.vulpix::before {
+  background: url('./imgs/vulpix.png');
+  background-size: contain;
+}
+
+.machop::before {
+  background: url('./imgs/machop.png');
+  background-size: contain;
+}
+
+.audino::before {
+  background: url('./imgs/audino.png');
+  background-size: contain;
+}
+
+.emboar::before {
+  background: url('./imgs/emboar.png');
+  background-size: contain;
+}
+
+.gigalith::before {
+  background: url('./imgs/gigalith.png');
+  background-size: contain;
+}
+
 .wailord::before {
   background: url('./imgs/wailord.png');
+  background-size: contain;
+}
+
+.samurott::before {
+  background: url('./imgs/samurott.png');
+  background-size: contain;
+}
+
+.drifblim::before {
+  background: url('./imgs/drifblim.png');
+  background-size: contain;
+}
+
+.ferrothorn::before {
+  background: url('./imgs/ferrothorn.png');
+  background-size: contain;
+}
+
+.flygon::before {
+  background: url('./imgs/flygon.png');
+  background-size: contain;
+}
+
+.lucario::before {
+  background: url('./imgs/lucario.png');
+  background-size: contain;
+}
+
+.lopunny::before {
+  background: url('./imgs/lopunny.png');
+  background-size: contain;
+}
+
+.zoroark::before {
+  background: url('./imgs/zoroark.png');
   background-size: contain;
 }
 

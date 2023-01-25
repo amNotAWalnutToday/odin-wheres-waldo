@@ -20,10 +20,10 @@ const Image = styled.img`
 const Box = styled.div`
     display: none;
     position: absolute;
-    top: calc(${props => props.pos.y}px + 0px);
-    left: calc(${props => props.pos.x}px + 200px);
-    width: 200px;
-    height: 85px;
+    top: calc(${props => props.pos.y}px + 460px);
+    left: calc(${props => props.pos.x}px + 0px);
+    width: 62px;
+    height: 115px;
     outline: 2px solid pink;
 `
 

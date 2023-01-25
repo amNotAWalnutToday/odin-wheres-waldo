@@ -71,6 +71,7 @@ const Highscores = ( {timeTaken,
         } catch(e) {
             console.error('Could not add score', e);
         }
+        resetGame();
     }
 
     return(

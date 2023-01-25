@@ -40,7 +40,7 @@ const Header = ( {objectives,
         <Heading>
             <Title>Find That Pokemon</Title>
             <Ul>
-                <ThingsToFind objectives={objectives} />
+                {objectives && <ThingsToFind objectives={objectives} />}
                 <Timer 
                     timeTaken={timeTaken}
                     incrementTimer={incrementTimer}

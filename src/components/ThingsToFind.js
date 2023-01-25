@@ -1,8 +1,10 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const Li = styled.li`
     font-size: 20px;
     list-style: none;
+    text-transform: capitalize;
     padding: ${props => props.fromDropdown ? "0rem 2rem 2rem 2rem" : "0 1rem"};
     transform: translateY(-25%);
     user-select: none;
@@ -12,6 +14,25 @@ const Li = styled.li`
 `
 
 const ThingsToFind = ( {objectives, validateImage, fromDropdown} ) => {
+    const [loading, setLoading] = useState(true);
+    const [pokemon, setPokemon] = useState();
+    useEffect(() => {
+        bindPokemon();
+        /* eslint-disable-next-line */
+    }, [objectives]);
+
+    useEffect(() => {
+        setLoading(false);
+    }, [pokemon]);
+
+    const bindPokemon = () => {
+        const pokemonList = [];
+        objectives.forEach(objective => {
+            pokemonList.push(objective.pokemon);
+        })
+        setPokemon(pokemonList);
+    }
+
     const checkFoundPokemon = (pokemon) => {
         let found;
         objectives.forEach(objective => {
@@ -22,39 +43,51 @@ const ThingsToFind = ( {objectives, validateImage, fromDropdown} ) => {
 
     return (
         <>
-            <Li 
-                className={fromDropdown ? "heatran menu-item" : "heatran"}
+            {!loading 
+            && <Li 
+                className={fromDropdown 
+                    ? `${pokemon[0]} menu-item` 
+                    : `${pokemon[0]}`
+                }
                 onClick={fromDropdown 
-                    ? () => validateImage("heatran") 
+                    ? () => validateImage(pokemon[0]) 
                     : undefined
                 }
-                found={checkFoundPokemon("heatran")}
+                found={checkFoundPokemon(pokemon[0])}
                 fromDropdown={fromDropdown}
             >
-                Heatran
-            </Li>
-            <Li 
-                className={fromDropdown ? "rayquaza  menu-item" : "rayquaza"}
+                {pokemon[0]}    
+            </Li>}
+            {!loading 
+            && <Li 
+                className={fromDropdown 
+                    ? `${pokemon[1]} menu-item`
+                    : `${pokemon[1]}`
+                }
                 onClick={fromDropdown
-                    ? () => validateImage("rayquaza")
+                    ? () => validateImage(pokemon[1])
                     : undefined
                 }
-                found={checkFoundPokemon("rayquaza")}
+                found={checkFoundPokemon(pokemon[1])}
                 fromDropdown={fromDropdown}
             >
-                Rayquaza
-            </Li>
-            <Li 
-                className={fromDropdown ? "wailord menu-item" : "wailord"}
+                {pokemon[1]}
+            </Li>}
+            {!loading 
+            && <Li 
+                className={fromDropdown 
+                    ? `${pokemon[2]} menu-item` 
+                    : `${pokemon[2]}`
+                }
                 onClick={fromDropdown
-                    ? () => validateImage("wailord")
+                    ? () => validateImage(pokemon[2])
                     : undefined
                 }
-                found={checkFoundPokemon("wailord")}
+                found={checkFoundPokemon(pokemon[2])}
                 fromDropdown={fromDropdown}
             >
-                Wailord
-            </Li>
+                {pokemon[2]}
+            </Li>}
         </>
     );
 }
