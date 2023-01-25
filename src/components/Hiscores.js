@@ -1,10 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
-import { collection, query, where, getDocs, addDoc, orderBy, limit } from 'firebase/firestore';
+import { useRef } from 'react';
+import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../App';
 import styled from "styled-components";
 import TopScores from './TopScores';
 import { Button } from './Header';
-
 
 const Popup = styled.div`
     position: absolute;
@@ -52,10 +51,16 @@ const ButtonGroup = styled.div`
     margin: 1rem 2rem;
 `
 
-const Highscores = ( {timeTaken, parseTime, allHighscores, toggleHighscores} ) => {
+const Highscores = ( {timeTaken,
+    parseTime, 
+    allHighscores, 
+    toggleHighscores, 
+    completeGame,
+    } ) => {
     const nameInput = useRef();
 
     const submitScore = async () => {
+        if(!nameInput.current.value || !completeGame()) return;
         try {
             const docRef = await addDoc(collection(db, "scores"), {
                 name: nameInput.current.value,
@@ -73,12 +78,25 @@ const Highscores = ( {timeTaken, parseTime, allHighscores, toggleHighscores} ) =
             <Popup>
                 <Heading>Highscores</Heading>
                 <hr />
-                {<TopScores allHighscores={allHighscores} parseTime={parseTime}/>}
+                <TopScores 
+                    allHighscores={allHighscores} 
+                    parseTime={parseTime}
+                />
                 <label htmlFor="name">Enter Name To Submit Score*</label>
-                <Input id="name" type="text" ref={nameInput} />
+                <Input 
+                    id="name" 
+                    type="text" 
+                    ref={nameInput}
+                    placeholder="Enter Name"
+                    maxLength="20" 
+                />
                 <ButtonGroup>
-                    <Button onClick={submitScore} >Submit</Button>
-                    <Button onClick={toggleHighscores} >Close</Button>
+                    <Button onClick={submitScore}>
+                        Submit
+                    </Button>
+                    <Button onClick={toggleHighscores}>
+                        Close
+                    </Button>
                 </ButtonGroup>
             </Popup>
         </>

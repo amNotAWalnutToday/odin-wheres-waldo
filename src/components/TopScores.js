@@ -22,6 +22,7 @@ const TopScores = ( {allHighscores, parseTime} ) => {
     }, []);
 
     const scoreMap = () => {
+        if(!allHighscores) return;
         return allHighscores.map((item, i) => {
             return (
                 <React.Fragment key={i} >
