@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/odin-wheres-waldo/static/css/main.95fb5127.css",
+    "main.js": "/odin-wheres-waldo/static/js/main.7d9ef559.js",
+    "static/media/pokemon-image.jpg": "/odin-wheres-waldo/static/media/pokemon-image.aad7b53e2ac589195255.jpg",
+    "static/media/emboar.png": "/odin-wheres-waldo/static/media/emboar.6556e83ab76f64c5b989.png",
+    "static/media/gigalith.png": "/odin-wheres-waldo/static/media/gigalith.ba14afb09b11b1ab9b8f.png",
+    "static/media/samurott.png": "/odin-wheres-waldo/static/media/samurott.17d7fa142d7afcca1481.png",
+    "static/media/rayquaza.png": "/odin-wheres-waldo/static/media/rayquaza.22dabe4167ec26be5af4.png",
+    "static/media/lopunny.png": "/odin-wheres-waldo/static/media/lopunny.8f51c780aefaaea48aea.png",
+    "static/media/audino.png": "/odin-wheres-waldo/static/media/audino.e9b1b247de06bec1f3ed.png",
+    "static/media/drifblim.png": "/odin-wheres-waldo/static/media/drifblim.b87fe32a727997c0dfe0.png",
+    "static/media/heatran.png": "/odin-wheres-waldo/static/media/heatran.922c1631768f77b961b1.png",
+    "static/media/ferrothorn.png": "/odin-wheres-waldo/static/media/ferrothorn.eacf1e52aa515d19953a.png",
+    "static/media/lucario.png": "/odin-wheres-waldo/static/media/lucario.45515bea97e0725cc821.png",
+    "static/media/flygon.png": "/odin-wheres-waldo/static/media/flygon.aa1d77ad4fa1c7a74477.png",
+    "static/media/wailord.png": "/odin-wheres-waldo/static/media/wailord.3ed9c6d19f33f11c5f88.png",
+    "static/media/vulpix.png": "/odin-wheres-waldo/static/media/vulpix.ab1efb7bf0a7098bf72f.png",
+    "index.html": "/odin-wheres-waldo/index.html",
+    "main.95fb5127.css.map": "/odin-wheres-waldo/static/css/main.95fb5127.css.map",
+    "main.7d9ef559.js.map": "/odin-wheres-waldo/static/js/main.7d9ef559.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.95fb5127.css",
+    "static/js/main.7d9ef559.js"
+  ]
+}
