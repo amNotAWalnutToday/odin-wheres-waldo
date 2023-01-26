@@ -1,26 +1,25 @@
 import styled from "styled-components";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 const Ol = styled.ol`
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    padding: 1rem 2rem;
+    gap: 0rem;
+    padding: 0rem 2rem 1rem 2rem;
+    margin-top: 0.1rem;
 `
 
 const Li = styled.li`
     display: flex;
     justify-content: space-between;
-    padding: 0rem 1rem;
+    padding: 1rem;
+
+    &:hover {
+        background-color: rgba(218, 165, 32, 0.8);
+    }
 `
 
 const TopScores = ( {allHighscores, parseTime} ) => {
-    const [loading, setLoading] = useState(true);
-    useEffect(() => {
-        const receive = setTimeout(() => setLoading(false), 100);
-        return () => clearTimeout(receive);
-    }, []);
-
     const scoreMap = () => {
         if(!allHighscores) return;
         return allHighscores.map((item, i) => {
@@ -37,10 +36,9 @@ const TopScores = ( {allHighscores, parseTime} ) => {
             )
         });
     }
-
     return (
         <Ol>
-            {loading ? undefined : scoreMap()}
+            {scoreMap()}
         </Ol>
     )
 }

@@ -101,7 +101,6 @@ const App = () => {
       });
       return topTen;
     }
-    console.log(allHighscores);
     return result();
   }
 
@@ -113,15 +112,12 @@ const App = () => {
       current.push(all[ran]);
       all.splice(ran, 1);
     }
-    console.log(current);
     setObjectives(current);
-    console.log(objectives)
   }
 
   useEffect(() => {
     randomizeObjectives();
     receiveScore();
-    console.log(objectives);
     /* eslint-disable-next-line */
   }, []);
 

@@ -3,7 +3,6 @@ import { collection, query, where, getDocs } from 'firebase/firestore';
 import { db } from '../App';
 import styled from 'styled-components';
 import Dropdown from './Dropdown';
-import TargetBox from './TargetBox';
 import theImage from '../imgs/pokemon-image.jpg';
 
 const Image = styled.img`
@@ -73,7 +72,6 @@ const GameImage = ( {objectives, findCharacter} ) => {
                 findCharacter(pokemon);
             }
         });
-        console.log(objectives)
         return validatedPokemon;
     }
 
@@ -93,7 +91,6 @@ const GameImage = ( {objectives, findCharacter} ) => {
                     objectives={objectives}
                 />
             }
-            {showMenu && <TargetBox clickPosition={clickPosition}/>}
         </div>
     );
 }
